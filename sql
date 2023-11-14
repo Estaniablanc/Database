@@ -1,4 +1,14 @@
-/*CREATE TABLE WORKS_ON
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+
+
+
+CREATE TABLE WORKS_ON
     (
         Essn char(9),
         Pno int,
@@ -7,7 +17,8 @@
         CONSTRAINT WORKSONEMPFK FOREIGN KEY(Essn) REFERENCES EMPLOYEE(Ssn) on update CASCADE on DELETE CASCADE,
         CONSTRAINT WORKSONWORK FOREIGN key(Pno) REFERENCES PROJECT(Pnumber) on update CASCADE ON DELETE CASCADE
         
-        )*/
+        )
+    
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
 UPDATE EMPLOYEE
