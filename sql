@@ -69,6 +69,18 @@ where Dnumber in (select Dno from EMPLOYEE group by Dno having count(*)>1);
 #for each department havin more than 1 employee, list the number of employee with salary >40000
 select Dno,count(*)
 from EMPLOYEE 
-where Salary >40000 and Dno in (select Dno from EMPLOYEE group by Dno having (*)>1);
+where Salary >40000 and Dno in (select Dno from EMPLOYEE group by Dno having (*)>1)
+group by Dno;//to get the number of employee 
 
+#find employee working on all projects
 
+A)
+select Essn
+from WORK_ON
+group by Essn
+having count(Pno) = (selecy count(*) from PROJECT);
+
+B)
+select Essn, count(*)
+from WORKS_ON w
+where (select count(*) from WORKS_ON w1 where w.Essn=w1.Essn) = (select count(*) from PROJECT);
