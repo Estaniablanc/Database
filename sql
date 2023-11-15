@@ -84,3 +84,17 @@ B)
 select Essn, count(*)
 from WORKS_ON w
 where (select count(*) from WORKS_ON w1 where w.Essn=w1.Essn) = (select count(*) from PROJECT);
+
+#find names of employee working on all projects controller by Dno 4
+
+select Fname,Lname
+from EMPLOYEE
+where 
+       (select count(*) //counting employee workinf on all projects 
+        from WORKS_ON join PROJECT on Pnumber=Pno 
+        where Dnum=4 and Ssn=Essn) =
+                  (select count(*) // countin all projects
+                   from Project    // from project
+                    where Dnum=4);  // restriction
+
+
