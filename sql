@@ -67,7 +67,7 @@ from Department
 where Dnumber in (select Dno from EMPLOYEE group by Dno having count(*)>1);
 
 #for each department havin more than 1 employee, list the number of employee with salary >40000
-select Dno,Dnumber
+select Dno,count(*)
 from EMPLOYEE 
 where Salary >40000 and Dno in (select Dno from EMPLOYEE group by Dno having (*)>1);
 
