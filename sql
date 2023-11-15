@@ -49,11 +49,13 @@ ALTER TABLE DEPARTMENT MODIFY Mgr_ssn char(9) DEFAULT '8886655555';
 
 DELETE from DEPARTMENT where Dnumber = 10; // to deltet 
 
+# 
 select count(*),avg(salary)
 from EMPLOYEE join department on Dno=Dnumber
 where Dname ='Research';
 
 #get dept havin more than one employee
+a) 
 select Dno,Dname
 from EMPLOYEE join DEPARTMENT on Dno=Dnumber
 group by Dno
@@ -64,5 +66,9 @@ select Dnumber,Dnum
 from Department 
 where Dnumber in (select Dno from EMPLOYEE group by Dno having count(*)>1);
 
+#for each department havin more than 1 employee, list the number of employee with salary >40000
+select Dno,Dnumber
+from EMPLOYEE 
+where Salary >40000 and Dno in (select Dno from EMPLOYEE group by Dno having (*)>1);
 
 
