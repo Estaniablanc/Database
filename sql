@@ -49,6 +49,24 @@ ALTER TABLE DEPARTMENT MODIFY Mgr_ssn char(9) DEFAULT '8886655555';
 
 DELETE from DEPARTMENT where Dnumber = 10; // to deltet 
 
+    \\\\\\\\\
+   *SQL JOIN*
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+    SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+*SQL LEFT JOIN Keyword*
+The LEFT JOIN keyword returns all records from the left table (table1),
+and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.
+    SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+Let's look at a selection from the "Orders" table:
+
 # 
 select count(*),avg(salary)
 from EMPLOYEE join department on Dno=Dnumber
@@ -97,4 +115,26 @@ where
                    from Project    // from project
                     where Dnum=4);  // restriction
 
+    #find employees who work on all project
 
+select Fname,Lname  // getting name
+from EMPLOYEE  // fromm employee table.
+where not exists  //same ass inn checkk iff valuee iss empty orr not.
+    (select Pno from WORKS_ON where Essn= Ssn 
+    and Pnumber not in //nott inn iss the same ass except.
+        (select Pnumber from PROJECT) );
+
+#find employee working on all projects that Alicia worked on
+select Fname, Lname
+from EMPLOYEE 
+where not exists
+      (select Pno from WORK_ON join EMPLOYEE on Essn=Ssn where Fname='Alicia'  //gettin project number that alicia works on.
+       and Pnumber not in  
+           (select Pno from WORKS_ON w1 where w1.Essn =e1.ssn));
+
+#get employeees working on the same project using same hours as Alicia
+
+select Fname,Lname
+from EMPLOYEE e join WORKS_ON on e.SSN=Essn
+where (Pno,Hours) in (select Pno, HOurs from WORK_ON w1 join EMPLOYEE e1
+on w1.Essn=e1.Ssn where Fname
