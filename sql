@@ -21,6 +21,7 @@ CREATE TABLE WORKS_ON
     
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
+    insert into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fondren,Huston, TX','M',30000,'333445555',5)
 UPDATE EMPLOYEE
 set Super_ssn='987654321',Dno=4
 where Ssn='999887777' or Ssn ='987987987';
