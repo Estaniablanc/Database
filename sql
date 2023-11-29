@@ -69,12 +69,12 @@ Create table COURSE (
     Department char(100),
     PRIMARY KEY (Course_number)
     );
-Create table SSECTION (
+Create table SECTION (
     Section_identifier int,
     Course_number char(100),
     Semester char(20),
     Year int,
-    Instructor char(20)
+    Instructor char(20),
     PRIMARY KEY (Section_identifier)
     );
     
@@ -83,8 +83,8 @@ CREATE table GRADE_REPORT(
     Section_identifier int,
     Grade Varchar(1),
     PRIMARY KEY (Student_number,Section_identifier),
-    FOREIGN key (Student_number) REFERENCES student( Student_number),
-    FOREIGN key (Section_identifier) REFERENCES SECTION( Section_identifier)
+    FOREIGN key (Student_number) REFERENCES STUDENT( Student_number),
+    FOREIGN key (Section_identifier) REFERENCES SECTIONS( Section_identifier)
     
     );
 CREATE table PREREQUISITE(
@@ -95,13 +95,15 @@ CREATE table PREREQUISITE(
     FOREIGN key (Prerequisite_number) REFERENCES COURSE( Course_number)
     
     );
-INSERT into student values('Smith',17,1,'CS'),('Brown',8,2,'CS')
+INSERT into STUDENT values('Smith',17,1,'CS'),('Brown',8,2,'CS')
 INSERT into COURSE values ('Intro to Computer Science','CS1310',4,'CS'),
 ('Data Structures','CS3320',4,'CS'),('Discrete Mathematics','MATH2410',3,'MATH'),('Database','CS3380',3,'CS')
-INSERT into SECTION values (85,'MATH2410','Fall',07,'King'),(92,'CS1310','Fall',07,'Anderson'),(102,'CS3320','Spring',08,'Knuth'),
+INSERT into SECTIONS values (85,'MATH2410','Fall',07,'King'),(92,'CS1310','Fall',07,'Anderson'),(102,'CS3320','Spring',08,'Knuth'),
 (112,'MATH2410','Fall',08,'Chang'),(119,'CS1310','Fall',08,'Anderson'),(135,'CS3380','Fall',08,'Stone')
+INSERT into GRADE_REPORT values (17,112,'B'),(17,119,'C'),(8,85,'A'),(8,92,'A'),(8,102,'B'),(8,135,'A')
+INSERT into Prerequisite values ('CS3380','CS3320'),('CS3380','MATH2410'),('CS3320','CS1310')
 
-    
+
     
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
