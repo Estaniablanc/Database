@@ -103,8 +103,15 @@ INSERT into SECTIONS values (85,'MATH2410','Fall',07,'King'),(92,'CS1310','Fall'
 INSERT into GRADE_REPORT values (17,112,'B'),(17,119,'C'),(8,85,'A'),(8,92,'A'),(8,102,'B'),(8,135,'A')
 INSERT into Prerequisite values ('CS3380','CS3320'),('CS3380','MATH2410'),('CS3320','CS1310')
 
-
+    1)
+SELECT Name, Course_number,Course_name,Semester, Year, Grade
+    from STUDENT 
+    join COURSE on STUDENT.Student_number = COURSE.Course_number
+    join SECTIONS on SECTIONS.Section_identifier = COURSE.Section_identifier
+    join GRADE_REPORT on GRADE_REPORT.Student_number
     
+    
+   //---------------------------------------------------------------------------------------------------------------------- 
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
     insert into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fondren,Huston, TX','M',30000,'333445555',5)
