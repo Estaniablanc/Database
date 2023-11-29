@@ -18,6 +18,31 @@ CREATE TABLE WORKS_ON
         CONSTRAINT WORKSONWORK FOREIGN key(Pno) REFERENCES PROJECT(Pnumber) on update CASCADE ON DELETE CASCADE
         
         )
+
+    //-------------------------------------------self Project--------------------------------------------
+    CREATE TABLE TEAMS (
+    team_Id int NOT NULL,
+    teamName char (30),
+    playerFName varchar(20) NOT NULL,
+    playerLName varchar(20),
+    playerNum int,
+    headCoach char,
+    PRIMARY KEY (team_Id)
+);
+CREATE TABLE PLAYER (
+    player_Id int NOT NULL,
+    fName char (30) NOt null,
+    lName varchar(20) NOT NULL,
+    position varchar(20),
+    placeOfBirth char (200),
+    college varchar(20),
+    weight decimal(3,2),
+    Salary int,
+    dateOfBirth varchar(10),
+    height char(4),
+    PRIMARY KEY (player_Id)
+);
+
     
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
