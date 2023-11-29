@@ -42,7 +42,16 @@ CREATE TABLE PLAYER (
     height char(4),
     PRIMARY KEY (player_Id)
 );
-
+CREATE TABLE OWNER (
+    owner_Id int(6) NOT NULL,
+    Fname char (30) NOt null,
+    Lname char(20) NOT NULL,
+    yearsOwned char(20),
+    placeOfBirth char (200),
+    team varchar(20),
+    paidAmount int,
+    PRIMARY KEY (owner_Id)
+);
     
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
          30000,NULL,NULL)  
