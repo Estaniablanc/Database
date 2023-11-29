@@ -109,7 +109,13 @@ SELECT Name, Course_number,Course_name,Semester, Year, Grade
     join COURSE on STUDENT.Student_number = COURSE.Course_number
     join SECTIONS on SECTIONS.Section_identifier = COURSE.Section_identifier
     join GRADE_REPORT on GRADE_REPORT.Student_number
-    
+
+    SELECT *
+from COURSE c
+JOIN GRADE_REPORT g on c.Course_number= g.Course_number
+join SECTIONS e on e.Section_identifier = g.Course_number
+join STUDENT s on s.Student_number = e.Section_identifier
+GROUP by Name, Course_number,Course_name,Semester, Grade
     
    //---------------------------------------------------------------------------------------------------------------------- 
         INSERT into EMPLOYEE values ('John','B','Smith','123456789','1965-01-09','731 Fodren, Huston, TX','M',
