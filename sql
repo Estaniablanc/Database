@@ -70,7 +70,13 @@ Create table COURSE (
     PRIMARY KEY (Course_number)
     );
 Create table SSECTION (
-    
+    Section_identifier int,
+    Course_number char(100),
+    Semester char(20),
+    Year int,
+    Instructor char(20)
+    PRIMARY KEY (Section_identifier)
+    );
     
 CREATE table GRADE_REPORT(
     Student_number int,
