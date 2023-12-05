@@ -118,8 +118,8 @@ JOIN COURSE c ON se.Course_number = c.Course_number
 
  2)   
 SELECT 
-   c.Course_name as Course_with_prerequisite,
-   p.Course_name as Prerequisite_course
+   c.Course_name as Course_and_prerequisite,
+   p.Course_name as Prerequisites
    from 
    PREREQUISITE pr 
    join COURSE c on pr.Course_number= c.Course_number
@@ -135,6 +135,11 @@ LEFT JOIN COURSE o on pr.Prerequisite_number = o.Course_number
 from SECTIONS
 where Year='08'
 
+7)SELECT s.name, COUNT(*) as Student_B_count
+from STUDENT s 
+join GRADE_REPORT g on s.Student_number =g.Student_number
+where g.Grade ='B'
+GROUP by s.Student_number
 
 
     --------------------------------------------------------------------------------------------------------
