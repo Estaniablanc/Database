@@ -104,6 +104,33 @@ INSERT into GRADE_REPORT values (17,112,'B'),(17,119,'C'),(8,85,'A'),(8,92,'A'),
 INSERT into Prerequisite values ('CS3380','CS3320'),('CS3380','MATH2410'),('CS3320','CS1310')
 
     1)
+    SELECT s.Name AS Students_name,  
+ c.COURSE_number,
+ c.Course_name,
+ se.Semester,
+ se.Year, 
+ g.Grade
+  
+FROM STUDENT AS s
+JOIN GRADE_REPORT g ON s.Student_number = g.Student_number
+JOIN SECTIONS se ON g.Section_identifier = se.Section_identifier
+JOIN COURSE c ON se.Course_number = c.Course_number
+
+ 2)   
+SELECT 
+   c.Course_name as Course_with_prerequisite,
+   p.Course_name as Prerequisite_course
+   from 
+   PREREQUISITE pr 
+   join COURSE c on pr.Course_number= c.Course_number
+   JOIN COURSE p on pr.Prerequisite_number =p.Course_number
+
+
+
+
+
+    --------------------------------------------------------------------------------------------------------
+    1)
 SELECT Name, Course_number,Course_name,Semester, Year, Grade
     from STUDENT 
     join COURSE on STUDENT.Student_number = COURSE.Course_number
@@ -201,7 +228,11 @@ having count(Pno) = (selecy count(*) from PROJECT);
 B)
 select Essn, count(*)
 from WORKS_ON w
-where (select count(*) from WORKS_ON w1 where w.Essn=w1.Essn) = (select count(*) from PROJECT);
+where 
+    (select count(*) 
+    from WORKS_ON w1 
+    where w.Essn=w1.Essn) = (select count(*) 
+    from PROJECT);
 
 #find names of employee working on all projects controller by Dno 4
 
@@ -220,7 +251,9 @@ where
 select Fname,Lname  // getting name
 from EMPLOYEE  // fromm employee table.
 where not exists  //same ass inn checkk iff valuee iss empty orr not.
-    (select Pno from WORKS_ON where Essn= Ssn 
+    (select Pno 
+    from WORKS_ON 
+    where Essn= Ssn 
     and Pnumber not in //nott inn iss the same ass except.
         (select Pnumber from PROJECT) );
 
