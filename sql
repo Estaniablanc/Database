@@ -125,7 +125,15 @@ SELECT
    join COURSE c on pr.Course_number= c.Course_number
    JOIN COURSE p on pr.Prerequisite_number =p.Course_number
 
+    3)SELECT c.Course_name
+from COURSE c 
+left join PREREQUISITE pr on c.Course_number= pr.Course_number
+LEFT JOIN COURSE o on pr.Prerequisite_number = o.Course_number
+    
 
+4)SELECT count(*) as Section_offered
+from SECTIONS
+where Year='08'
 
 
 
