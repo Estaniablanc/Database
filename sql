@@ -52,6 +52,55 @@ CREATE TABLE OWNER (
     paidAmount int,
     PRIMARY KEY (owner_Id)
 );
+\\----------------------------------------------lab1------------------------------------------
+ 
+    CREATE table STUDENT(
+     Name char (20),
+    Student_number int,
+    Class int,
+    Major char (20),
+    PRIMARY KEY (Student_number)
+);
+Create table COURSE (
+    Course_name char(100),
+    Course_number char(100),
+    Credit_hours int,
+    Department char(100),
+    PRIMARY KEY (Course_number)
+    );
+Create table SECTION (
+    Section_identifier int,
+    Course_number char(100),
+    Semester char(20),
+    Year int,
+    Instructor char(20),
+    PRIMARY KEY (Section_identifier)
+    );
+    
+CREATE table GRADE_REPORT(
+    Student_number int,
+    Section_identifier int,
+    Grade Varchar(1),
+    PRIMARY KEY (Student_number,Section_identifier),
+    FOREIGN key (Student_number) REFERENCES STUDENT( Student_number),
+    FOREIGN key (Section_identifier) REFERENCES SECTIONS( Section_identifier)
+    
+    );
+CREATE table PREREQUISITE(
+    Course_number char(20(,
+    Prerequisite_number char(20),
+    PRIMARY KEY (Course_number, Prerequisite_number),
+    FOREIGN key (Course_number) REFERENCES COURSE( Course_number),
+    FOREIGN key (Prerequisite_number) REFERENCES COURSE( Course_number)
+    
+    );
+INSERT INTO Course values (’Algebra’, ‘MATH2410’, 3, ‘MATH’)
+INSERT into SECTIONS values (01, ‘CS3320’, ‘Spring’, 09, ‘Knuth’)
+INSERT into GRADE_REPORT values(8, 200, 90.5)
+UPDATE STUDENT SET Major = 'MATH' WHERE Student_number =8;
+UPDATE PREREQUSITE SET Prerequisite_number = ‘CS1110’ WHERE Course_number = ‘CS3320’
+DELETE FROM STUDENT WHERE Student_number = 8
+
 \\----------------------------------------------lab2------------------------------------------------
 ALTER table COURSE MODIFY COLUMN Course_name char(20)
     
