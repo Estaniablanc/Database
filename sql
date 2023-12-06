@@ -284,3 +284,29 @@ select Fname,Lname
 from EMPLOYEE e join WORKS_ON on e.SSN=Essn
 where (Pno,Hours) in (select Pno, HOurs from WORK_ON w1 join EMPLOYEE e1
 on w1.Essn=e1.Ssn where Fname
+
+create function table_name(colum_info) return Return_messge_type
+    begin declare Colume_declaring_name
+    from table_name
+    where 
+    if Colume_declaring_name then return "whatever"
+    end if;
+    end//
+ DELIMITER
+    
+    
+Delimiter //
+create function DEPT_SIZE (Dept_no INt) return vachar(10) 
+    begin declare no_of_employees int
+    select count(*) into nums
+    from EMPLOYEE
+    where Dno=Dept_no
+    IF no_of_employees<2 then return "smal"
+    elseif no_of_employees<4 then return "meduim"
+    elseif no_of_employees< then return "large"
+    else return "huge"
+    end if
+    end //
+    DELIMITER ;
+    select Dept_size(1)
+    select Dept_size(1);
