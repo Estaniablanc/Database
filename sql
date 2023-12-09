@@ -76,9 +76,19 @@ Create table SEASON (
     tradedPlayer char(30),
     Win int,
     Lost int,
-    offseason_cut_player char(30)
-
-
+    season_cut_player char(30),
+    primary key(season_id)
+    );
+create table OFFSEASON (
+    offseason_id int,
+    signedPlayer char(30),
+    traded_os_player char(30),
+    offseason_cut_player char(30),
+    primary key(offseason_id)
+    );
+create table Performance (
+    player_Id int not null,
+    stat_id int,
     
 \\----------------------------------------------lab1------------------------------------------
  
