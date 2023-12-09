@@ -65,9 +65,9 @@ CREATE TABLE OWNER (
     paidAmount char(20),
     PRIMARY KEY (owner_Id)
 );
-INSERT INTO OWNER values (123456,'Jeanie','Buss','5 years','Santa Monica, CA','Los Angeles Lakers','10 Million')
-INSERT INTO OWNER values (678901,'Joe ','Lacob','8 years','New Bedford, MA','Golden warriors','14 Million')
-INSERT INTO OWNER values (654321,'JWyc','Grousbeck','13 years','Worcester, MA','Boston Celtics','20 Million')
+INSERT INTO OWNER values (123456,'Jeanie','Buss','5 years','Santa Monica, CA','Los Angeles Lakers','10 Million');
+INSERT INTO OWNER values (678901,'Joe ','Lacob','8 years','New Bedford, MA','Golden warriors','14 Million');
+INSERT INTO OWNER values (654321,'JWyc','Grousbeck','13 years','Worcester, MA','Boston Celtics','20 Million');
     
  Create table GAME (
      game_id int,
@@ -78,8 +78,9 @@ INSERT INTO OWNER values (654321,'JWyc','Grousbeck','13 years','Worcester, MA','
      date char(30),
      primary key (game_Id)
      );
-INSERT INTO GAME values (987,'Lakers','Warriors',30,8,'09-12-2020')
-INSERT INTO GAME values (543,'Warriors','Celctics',10 ,18,'10-04-2018')
+INSERT INTO GAME values (987,'Lakers','Warriors',30,8,'09-12-2020');
+INSERT INTO GAME values (543,'Warriors','Celctics',10 ,18,'10-04-2018');
+INSERT INTO GAME values (321,'Celtics','lakers',20 ,12,'10-15-2023');
     
 Create table STAT (
     stat_id int not null,
@@ -90,9 +91,11 @@ Create table STAT (
     assist int, 
     primary key (stat_id)
     );
-INSERT INTO STAT values (
-INSERT INTO STAT values (
-
+INSERT INTO STAT values (001,11,15,23,43,10);
+INSERT INTO STAT values (002,32,13,46,24,23);
+INSERT INTO STAT values (003,16,29,29,19,34);
+INSERT INTO STAT values (004,28,27,47,17,13);
+    
 Create table SEASON (
     season_id int,
     tradedPlayer char(30),
@@ -101,6 +104,10 @@ Create table SEASON (
     season_cut_player char(30),
     primary key(season_id)
     );
+INSERT INTO SEASON values (1, 'Sean Milli', 20,10,'Jason Smith');
+INSERT INTO SEASON values (2,'Tylor Moor',15,15,'Mason Good');
+INSERT INTO SEASON values (3,'John Benet',12,18,'None');
+
 create table OFFSEASON (
     offseason_id int,
     signedPlayer char(30),
@@ -108,6 +115,10 @@ create table OFFSEASON (
     offseason_cut_player char(30),
     primary key(offseason_id)
     );
+INSERT INTO OFFSEASON values (10,'Tyler Lockwood','None','None');
+INSERT INTO OFFSEASON values (11,'Matthew Doniven','Stephen Salvator','Elijah Mikelson');
+INSERT INTO OFFSEASON values (12,'Daniel Lawrie','Jack freeman','None');
+    
 create table Performance (
     player_Id int ,
     stat_id int,
@@ -115,6 +126,11 @@ create table Performance (
     FOREIGN key (player_Id) REFERENCES PLAYER( player_Id),
     FOREIGN key (stat_id) REFERENCES STAT( stat_id)
 );
+INSERT INTO Performance values (123,002);
+INSERT INTO Performance values (345,001);
+INSERT INTO Performance values (567,004);
+
+    
 create table PURCHACE (
     owner_id int,
     team_id int,
@@ -122,40 +138,47 @@ create table PURCHACE (
     FOREIGN key (owner_id) REFERENCES OWNER (owner_id),
     FOREIGN key (team_id) REFERENCES TEAMS ( team_id)
     );
-create table PLAYS (
+
+INSERT INTO PURCHACE values (123456,01);
+INSERT INTO PURCHACE values (678901,02);
+INSERT INTO PURCHACE values (654321,03);
+
+
+    create table PLAYS (
     team_Id INT,
     game_id INT,
      PRIMARY KEY ( team_Id,game_id),
     FOREIGN key (team_Id) REFERENCES TEAMS (team_Id),
     FOREIGN key (game_id) REFERENCES GAME ( game_id)
     );
+
+INSERT INTO PLAYS values (01,987);
+INSERT INTO PLAYS values (02,543);
+INSERT INTO PLAYS values (03,321);
+
+    
 create table TEAM_OFFSEASON (
     team_id INT,
     offseason_id INT,
-    traded_ofs_player CHAR(30),
-    drafted_player CHAR(30),
-    offseason_cut_player char(30),
-    cut_player char(30),
-    signed_player char(30),
     PRIMARY KEY (team_id,offseason_id ),
     FOREIGN key (team_id) REFERENCES TEAMS (team_Id),
     FOREIGN key (offseason_id ) REFERENCES OFFSEASON ( offseason_id)
     );
+INSERT INTO TEAM_OFFSEASON values (01,11);
+INSERT INTO TEAM_OFFSEASON values (02,12);
+INSERT INTO TEAM_OFFSEASON values (03,10);
 
 create table TEAM_SEASON (
     team_id int,
     season_id int,
-    Win int,
-    Lost int,
-    season_cut_player char(30),
-    traded_player char(30),
     PRIMARY KEY (team_id,season_id),
     FOREIGN key (team_id) REFERENCES TEAMS (team_Id),
     FOREIGN key (season_id ) REFERENCES SEASON ( season_id)
     );
+INSERT INTO TEAM_SEASON values (01,3);
+INSERT INTO TEAM_SEASON values (02,1);
+INSERT INTO TEAM_SEASON values (03,2);
 
-
-INSERT INTO Course values 
 \\----------------------------------------------lab1------------------------------------------
  
     CREATE table STUDENT(
