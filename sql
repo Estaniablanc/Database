@@ -52,6 +52,34 @@ CREATE TABLE OWNER (
     paidAmount int,
     PRIMARY KEY (owner_Id)
 );
+
+ Create table GAME (
+     game_id int,
+     team_one char(30),
+     team_two char(30),
+     score_one int,
+     score_two int,
+     date char(30),
+     primary key (game_Id)
+     );
+Create table STAT (
+    stat_id int not null,
+    points int,
+    rebounds int,
+    blocks int,
+    steals int,
+    assist int, 
+    primary key (stat_id)
+    );
+Create table SEASON (
+    season_id int,
+    tradedPlayer char(30),
+    Win int,
+    Lost int,
+    offseason_cut_player char(30)
+
+
+    
 \\----------------------------------------------lab1------------------------------------------
  
     CREATE table STUDENT(
