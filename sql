@@ -29,6 +29,13 @@ CREATE TABLE WORKS_ON
     headCoach char,
     PRIMARY KEY (team_Id)
 );
+ALTER table TEAMS MODIFY COLUMN headCoach char(20)
+    
+INSERT INTO TEAMS values (01,'Los Angeles Lakers','LeBron','James',23,'Darvin Ham')
+INSERT INTO TEAMS values (02,'Golden State warriors','Stephen','Curry',30,'Steve Kerr');
+INSERT INTO TEAMS values (03,'Boston Celtics','Jrue','Holiday',4,'Joe Mazzulla');
+
+    
 CREATE TABLE PLAYER (
     player_Id int NOT NULL,
     fName char (30) NOt null,
@@ -36,12 +43,18 @@ CREATE TABLE PLAYER (
     position varchar(20),
     placeOfBirth char (200),
     college varchar(20),
-    weight decimal(3,2),
+    weight char(4),
     Salary int,
     dateOfBirth varchar(10),
     height char(4),
     PRIMARY KEY (player_Id)
 );
+
+INSERT INTO PLAYER values (123,'Lebron','James','Shooting gaurd','Okron, Ohio','NONE','250lbs' ,100000,'12-30-1984','6.9');
+INSERT INTO PLAYER values (345,'Stephen','Curry','Point gaurd','Okron, Ohio','Davidson College','185lbs' ,80000,'03-14-1988','6.2');
+INSERT INTO PLAYER values (567,'Jrue','Holiday','Point gaurd','Los Angeles, CA','UCLA','205lbs' ,50000,'06-12-1990','6.4');
+
+    
 CREATE TABLE OWNER (
     owner_Id int(6) NOT NULL,
     Fname char (30) NOt null,
@@ -49,10 +62,13 @@ CREATE TABLE OWNER (
     yearsOwned char(20),
     placeOfBirth char (200),
     team varchar(20),
-    paidAmount int,
+    paidAmount char(20),
     PRIMARY KEY (owner_Id)
 );
-
+INSERT INTO OWNER values (123456,'Jeanie','Buss','5 years','Santa Monica, CA','Los Angeles Lakers','10 Million')
+INSERT INTO OWNER values (678901,'Joe ','Lacob','8 years','New Bedford, MA','Golden warriors','14 Million')
+INSERT INTO OWNER values (654321,'JWyc','Grousbeck','13 years','Worcester, MA','Boston Celtics','20 Million')
+    
  Create table GAME (
      game_id int,
      team_one char(30),
@@ -62,6 +78,9 @@ CREATE TABLE OWNER (
      date char(30),
      primary key (game_Id)
      );
+INSERT INTO GAME values (987,'Lakers','Warriors',30,8,'09-12-2020')
+INSERT INTO GAME values (543,'Warriors','Celctics',10 ,18,'10-04-2018')
+    
 Create table STAT (
     stat_id int not null,
     points int,
@@ -71,6 +90,9 @@ Create table STAT (
     assist int, 
     primary key (stat_id)
     );
+INSERT INTO STAT values (
+INSERT INTO STAT values (
+
 Create table SEASON (
     season_id int,
     tradedPlayer char(30),
@@ -131,6 +153,9 @@ create table TEAM_SEASON (
     FOREIGN key (team_id) REFERENCES TEAMS (team_Id),
     FOREIGN key (season_id ) REFERENCES SEASON ( season_id)
     );
+
+
+INSERT INTO Course values 
 \\----------------------------------------------lab1------------------------------------------
  
     CREATE table STUDENT(
