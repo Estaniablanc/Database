@@ -87,9 +87,50 @@ create table OFFSEASON (
     primary key(offseason_id)
     );
 create table Performance (
-    player_Id int not null,
+    player_Id int ,
     stat_id int,
-    
+    PRIMARY KEY (player_Id,stat_id),
+    FOREIGN key (player_Id) REFERENCES PLAYER( player_Id),
+    FOREIGN key (stat_id) REFERENCES STAT( stat_id)
+);
+create table PURCHACE (
+    owner_id int,
+    team_id int,
+    PRIMARY KEY (owner_id,team_id),
+    FOREIGN key (owner_id) REFERENCES OWNER (owner_id),
+    FOREIGN key (team_id) REFERENCES TEAMS ( team_id)
+    );
+create table PLAYS (
+    team_Id INT,
+    game_id INT,
+     PRIMARY KEY ( team_Id,game_id),
+    FOREIGN key (team_Id) REFERENCES TEAMS (team_Id),
+    FOREIGN key (game_id) REFERENCES GAME ( game_id)
+    );
+create table TEAM_OFFSEASON (
+    team_id INT,
+    offseason_id INT,
+    traded_ofs_player CHAR(30),
+    drafted_player CHAR(30),
+    offseason_cut_player char(30),
+    cut_player char(30),
+    signed_player char(30),
+    PRIMARY KEY (team_id,offseason_id ),
+    FOREIGN key (team_id) REFERENCES TEAMS (team_Id),
+    FOREIGN key (offseason_id ) REFERENCES OFFSEASON ( offseason_id)
+    );
+
+create table TEAM_SEASON (
+    team_id int,
+    season_id int,
+    Win int,
+    Lost int,
+    season_cut_player char(30),
+    traded_player char(30),
+    PRIMARY KEY (team_id,season_id),
+    FOREIGN key (team_id) REFERENCES TEAMS (team_Id),
+    FOREIGN key (season_id ) REFERENCES SEASON ( season_id)
+    );
 \\----------------------------------------------lab1------------------------------------------
  
     CREATE table STUDENT(
