@@ -543,3 +543,11 @@ create function DEPT_SIZE (Dept_no INt) return vachar(10)
     DELIMITER ;
     select Dept_size(1)
     select Dept_size(1);
+FROM STUDENT AS s
+JOIN GRADE_REPORT g ON s.Student_number = g.Student_number
+JOIN SECTIONS se ON g.Section_identifier = se.Section_identifier
+JOIN COURSE c ON se.Course_number = c.Course_number
+
+
+
+    
