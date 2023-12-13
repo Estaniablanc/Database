@@ -19,6 +19,32 @@ CREATE TABLE WORKS_ON
         
         )
 
+    JOIN in SQL is used to combine data from many tables based on a 
+    matched condition between them. The data combined using the JOIN statement results in new columns. Consider the two tables:
+    JOIN combines data from many tables based on a matched condition between them
+    It combines data into new columns.
+    The number of columns selected from each table may not be the same.
+    Datatypes of corresponding columns selected from each table can be different.
+    
+    SELECT Boys.Name, Boys.Age, Girls.Address,
+     FROM Boys INNER JOIN Girls 
+     ON Boys.Rollno = Girls.Rollno;
+
+    
+
+    UNION in SQL is used to combine the result set of two or more SELECT statements. The data combined using the UNION statement 
+    is into results into new distinct rows. 
+    SQL combines the result set of two or more SELECT statements.
+    It combines data into new rows
+    The number of columns selected from each table should be the same.
+    The data types of corresponding columns selected from each table should be the same.
+
+    SELECT Name FROM Boys 
+     WHERE Rollno < 16 
+     UNION
+     SELECT Name FROM Girls 
+     WHERE Rollno > 9 
+
     //-------------------------------------------self Project--------------------------------------------
     CREATE TABLE TEAMS (
     team_Id int NOT NULL,
@@ -35,7 +61,10 @@ INSERT INTO TEAMS values (01,'Los Angeles Lakers','LeBron','James',23,'Darvin Ha
 INSERT INTO TEAMS values (02,'Golden State warriors','Stephen','Curry',30,'Steve Kerr');
 INSERT INTO TEAMS values (03,'Boston Celtics','Jrue','Holiday',4,'Joe Mazzulla');
 
-    
+2.which team and position Lebron James plays
+    select teamName as Team, position 
+    from TEAMS t
+    join Player p on t.player_Id = p.player_Id    
 CREATE TABLE PLAYER (
     player_Id int NOT NULL,
     fName char (30) NOt null,
@@ -54,6 +83,10 @@ INSERT INTO PLAYER values (123,'Lebron','James','Shooting gaurd','Okron, Ohio','
 INSERT INTO PLAYER values (345,'Stephen','Curry','Point gaurd','Okron, Ohio','Davidson College','185lbs' ,80000,'03-14-1988','6.2');
 INSERT INTO PLAYER values (567,'Jrue','Holiday','Point gaurd','Los Angeles, CA','UCLA','205lbs' ,50000,'06-12-1990','6.4');
 
+All players that that was born in Okron
+    select fName as First_Name, lName as Last_Name 
+    from PLAYER 
+    where placeOfBirth = 'Okron'
     
 CREATE TABLE OWNER (
     owner_Id int(6) NOT NULL,
@@ -179,6 +212,9 @@ INSERT INTO TEAM_SEASON values (01,3);
 INSERT INTO TEAM_SEASON values (02,1);
 INSERT INTO TEAM_SEASON values (03,2);
 
+
+
+
 \\----------------------------------------------lab1------------------------------------------
  
     CREATE table STUDENT(
@@ -226,7 +262,7 @@ INSERT into SECTIONS values (01, ‘CS3320’, ‘Spring’, 09, ‘Knuth’)
 INSERT into GRADE_REPORT values(8, 200, 90.5)
 UPDATE STUDENT SET Major = 'MATH' WHERE Student_number =8;
 UPDATE PREREQUSITE SET Prerequisite_number = ‘CS1110’ WHERE Course_number = ‘CS3320’
-DELETE FROM STUDENT WHERE Student_number = 8
+DELETE FROM STUDENT WHERE Student_number = 8;
 
 \\----------------------------------------------lab2------------------------------------------------
 ALTER table COURSE MODIFY COLUMN Course_name char(20)
