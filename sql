@@ -45,6 +45,27 @@ CREATE TABLE WORKS_ON
      SELECT Name FROM Girls 
      WHERE Rollno > 9 
 
+      DISTINCT REMOVE DUPLICATES
+
+    select *
+        from student 
+        where name = 'sfhh' and name= 'ghj' and name ='fghh'
+         can ber written as :
+                     select *
+        from student 
+        where name in ('sfhh','ghj','fghh')
+
+       -------join 
+        select s.Fname , s.Lname , g.grade 
+        from student s 
+        join grade_report g on  s.gradeId= g.gradeId
+
+         -------join more than one table 
+        select s.Fname , s.Lname , g.grade 
+        from student s 
+        join grade_report g on  s.gradeId= g.gradeId
+        join table_two t on s.table_twoId =t.table_twoId
+        
     //-------------------------------------------self Project--------------------------------------------
     CREATE TABLE TEAMS (
     team_Id int NOT NULL,
